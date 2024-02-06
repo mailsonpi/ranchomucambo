@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/style.css">
+  <title>Date Picker</title>
+</head>
+<body>
+	<div class="datepicker-container">
+		<label for="datepicker1">Selecione uma data (1):</label>
+		<input type="text" id="datepicker1">
+	</div>
+	<div class="datepicker-container">
+		<label for="datepicker2">Selecione uma data (2):</label>
+		<input type="text" id="datepicker2">
+	</div>
+	<button id="retornarDatas">Retornar Datas</button>
+
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+		$(function() {
+		// Lista de datas indisponíveis (pode ser obtida dinamicamente do backend)
+		var datasIndisponiveis = ["2024-01-10", "2024-02-15", "2024-03-20"];
+
+		// Inicializa o datepicker para o input 1
+		$("#datepicker1").datepicker({
+			beforeShowDay: function(date) {
+			var formattedDate = $.datepicker.formatDate("yy-mm-dd", date);
+			return [datasIndisponiveis.indexOf(formattedDate) === -1];
+			},
+			dateFormat: "yy-mm-dd",
+			minDate: "2024-01-01",
+			maxDate: "2024-12-31"
+		});
+
+		// Inicializa o datepicker para o input 2
+		$("#datepicker2").datepicker({
+			beforeShowDay: function(date) {
+			var formattedDate = $.datepicker.formatDate("yy-mm-dd", date);
+			return [datasIndisponiveis.indexOf(formattedDate) === -1];
+			},
+			dateFormat: "yy-mm-dd",
+			minDate: "2024-01-01",
+			maxDate: "2024-12-31"
+		});
+
+		// Adiciona um ouvinte de evento de clique ao botão
+		$("#retornarDatas").click(function() {
+			// Obtém as datas de início e de fim dos inputs
+			var startDate = $("#datepicker1").datepicker("getDate");
+			var endDate = $("#datepicker2").datepicker("getDate");
+
+			// Verifica se as datas foram inseridas
+			if (startDate && endDate) {
+			var result = getDatesBetween(startDate, endDate);
+			console.log('Datas entre:', result);
+			} else {
+			alert('Por favor, insira datas de início e de fim.');
+			}
+		});
+
+		function getDatesBetween(startDate, endDate) {
+			var dates = [];
+			var currentDate = new Date(startDate);
+
+			endDate = new Date(endDate);
+
+			while (currentDate <= endDate) {
+			dates.push(new Date(currentDate));
+			currentDate.setDate(currentDate.getDate() + 1);
+			}
+
+			return dates.map(date => date.toISOString().slice(0, 10));
+		}
+		});
+	</script>
+</body>
+</html>
