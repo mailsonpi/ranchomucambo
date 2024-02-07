@@ -1,236 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/marca.svg" type="image/x-icon">
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Rancho Serra do Mucambo</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav>
-        <div class="nav__bar">
-          <div class="logo">
-            <a href="#"><img src="assets/marca.svg" alt="logo" /></a>
-          </div>
-          <div class="nav__menu__btn" id="menu-btn">
-            <i class="ri-menu-line"></i>
-          </div>
-        </div>
+</head>
 
-      </nav>
-      <div class="section__container header__container" id="home">
-        
-      </div>
+<body>
+    <header class="header">
+        <nav>
+            <div class="nav__bar">
+                <div class="logo">
+                    <a href="#"><img src="assets/marca.svg" alt="logo" /></a>
+                </div>
+                <div class="nav__menu__btn" id="menu-btn">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+
+        </nav>
+        <div class="section__container header__container" id="home">
+
+        </div>
     </header>
 
     <section class="section__container booking__container">
-      <form action="/" class="booking__form">
-        <div class="input__group">
-          <span><i class="ri-calendar-2-fill"></i></span>
-          <div>
-            <label for="check-in">Entrada</label>
-            <input type="text" placeholder="Entrada" />
-          </div>
+        <div action="/" class="booking__form">
+            <div class="input__group">
+                <span><i class="ri-calendar-2-fill"></i></span>
+                <div class="datepicker-container">
+                    <label for="datepicker1">Entrada:</label>
+                    <input type="text" id="datepicker1" placeholder="Clique aqui.">
+                </div>
+            </div>
+            <div class="input__group">
+                <span><i class="ri-calendar-2-fill"></i></span>
+                <div class="datepicker-container">
+                    <label for="datepicker2">Saída:</label>
+                    <input type="text" id="datepicker2" placeholder="Clique aqui.">
+                </div>
+            </div>
+            <div class="input__group">
+                <span><i class="ri-user-fill"></i></span>
+                <div>
+                    <label for="guest">Responsável</label>
+                    <input type="text" id="responsavel" placeholder="Responsavel" />
+                </div>
+            </div>
+            <div class="input__group">
+                <span><i class="ri-user-fill"></i></span>
+                <div>
+                    <label for="guest">Número</label>
+                    <input id="cellNumber" type="text" placeholder="Número" maxlength="14"
+                        oninput="cellNumberFormt(this)" />
+                </div>
+            </div>
+            <div class="input__group">
+                <span><i class="ri-user-fill"></i></span>
+                <div>
+                    <label for="guest">CPF</label>
+                    <input id="cpfdocument" maxlength="14" type="text" placeholder="xxx.xxx.xxx-xx"
+                        oninput="documentFormat(this)" />
+                </div>
+            </div>
+            <div class="input__group input__btn">
+                <button class="btn" onclick="enviarFormulario()">Reservar</button>
+            </div>
         </div>
-        <div class="input__group">
-          <span><i class="ri-calendar-2-fill"></i></span>
-          <div>
-            <label for="check-out">Saída</label>
-            <input type="text" placeholder="Saída" />
-          </div>
-        </div>
-        <div class="input__group">
-          <span><i class="ri-user-fill"></i></span>
-          <div>
-            <label for="guest">Responsável</label>
-            <input type="text" placeholder="Responsável" />
-          </div>
-        </div>
-        <div class="input__group input__btn">
-          <button class="btn">Reservar</button>
-        </div>
-      </form>
     </section>
 
     <section class="section__container about__container" id="about">
-      <div class="about__image">
-        <img src="assets/img_2.webp" alt="about" />
-      </div>
-      <div class="about__content">
-        <p class="section__subheader">Sobre</p>
-        <h2 class="section__header">Rancho Serra do Mucambo</h2>
-        <p class="section__description">
-         O Rancho Serra do Mucambo é um espaço no pé da Serra do
-Mucambo, localizado no interior da Bahia, distrito de Salgadália
-(Conceição do Coité) onde a paz, diversão e alegria sempre será
-bem-vinda!
-
-        </p>
-        <div class="about__btn">
-          <button class="btn1">Reservar</button>
+        <div class="about__image">
+            <img src="assets/img_2.webp" alt="about" />
         </div>
-      </div>
+        <div class="about__content">
+            <p class="section__subheader">Sobre</p>
+            <h2 class="section__header">Rancho Serra do Mucambo</h2>
+            <p class="section__description">
+                O Rancho Serra do Mucambo é um espaço no pé da Serra do
+                Mucambo, localizado no interior da Bahia, distrito de Salgadália
+                (Conceição do Coité) onde a paz, diversão e alegria sempre será
+                bem-vinda!
+
+            </p>
+            <div class="about__btn">
+                <button class="btn1">Reserconst</button>
+            </div>
+        </div>
     </section>
 
     <section class="section__container room__container">
-      <p class="section__subheader">Nossa Galeria</p>
-      <h2 class="section__header">Momentos Registrados.</h2>
-      <div class="room__grid">
-        <div class="room__card">
-          <div class="room__card__image">
-            <img src="1.jpeg" alt="room" />
-            <div class="room__card__icons">
-              <span><i class="ri-heart-fill"></i></span>
-             
+        <p class="section__subheader">Nossa Galeria</p>
+        <h2 class="section__header">Momentos Registrados.</h2>
+        <div class="room__grid">
+            <div class="room__card">
+                <div class="room__card__image">
+                    <img src="1.jpeg" alt="room" />
+                    <div class="room__card__icons">
+                        <span><i class="ri-heart-fill"></i></span>
+
+                    </div>
+                </div>
+                <div class="room__card__details">
+
+                    <a
+                        href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button
+                            class="btn">Ver mais</button></a>
+                </div>
             </div>
-          </div>
-          <div class="room__card__details">
-          
-            <a href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button class="btn">Ver mais</button></a> 
-          </div>
-        </div>
-        <div class="room__card">
-          <div class="room__card__image">
-            <img src="2.jpeg" alt="room" />
-            <div class="room__card__icons">
-              <span><i class="ri-heart-fill"></i></span>
-             
+            <div class="room__card">
+                <div class="room__card__image">
+                    <img src="2.jpeg" alt="room" />
+                    <div class="room__card__icons">
+                        <span><i class="ri-heart-fill"></i></span>
+
+                    </div>
+                </div>
+                <div class="room__card__details">
+
+
+
+                    <a
+                        href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button
+                            class="btn">Ver mais</button></a>
+                </div>
             </div>
-          </div>
-          <div class="room__card__details">
-          
-           
-           
-           <a href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button class="btn">Ver mais</button></a> 
-          </div>
-        </div>
-        <div class="room__card">
-          <div class="room__card__image">
-            <img src="3.jpeg" alt="room" />
-            <div class="room__card__icons">
-              <span><i class="ri-heart-fill"></i></span>
-              
+            <div class="room__card">
+                <div class="room__card__image">
+                    <img src="3.jpeg" alt="room" />
+                    <div class="room__card__icons">
+                        <span><i class="ri-heart-fill"></i></span>
+
+                    </div>
+                </div>
+                <div class="room__card__details">
+
+                    <a
+                        href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button
+                            class="btn">Ver mais</button></a>
+                </div>
             </div>
-          </div>
-          <div class="room__card__details">
-            
-             <a href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><button class="btn">Ver mais</button></a> 
-          </div>
         </div>
-      </div>
     </section>
 
     <section class="service" id="service">
-      <div class="section__container service__container">
-        <div class="service__content">
-          <p class="section__subheader">Incluso</p>
-          <h2 class="section__header">Espaço completo para diversão.</h2>
-          <ul class="service__list">
-            <li>
-              <span><img src="icone_churrasqueira.png"></img></span>
-              Churrasqueira
-            </li>
-            <li>
-              <span><img src="icone_natureza.png"></img></span>
-             Conexão com a Natureza
-            </li>
-          <li>
-              <span><img src="icone_piscinaecampo.png"></img></span>
-              Piscina e Campo Society/Vôlei
-            </li>
-           <li>
-              <span><img src="icone_sinucaetoto.png"></img></span>
-              Sinuca e Toto
-            </li>
-          </ul>
+        <div class="section__container service__container">
+            <div class="service__content">
+                <p class="section__subheader">Incluso</p>
+                <h2 class="section__header">Espaço completo para diversão.</h2>
+                <ul class="service__list">
+                    <li>
+                        <span><img src="icone_churrasqueira.png"></img></span>
+                        Churrasqueira
+                    </li>
+                    <li>
+                        <span><img src="icone_natureza.png"></img></span>
+                        Conexão com a Natureza
+                    </li>
+                    <li>
+                        <span><img src="icone_piscinaecampo.png"></img></span>
+                        Piscina e Campo Society/Vôlei
+                    </li>
+                    <li>
+                        <span><img src="icone_sinucaetoto.png"></img></span>
+                        Sinuca e Toto
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </section>
 
     <section class="section__container banner__container">
-      <div class="banner__content">
-        <div class="banner__card">
-          <h4>+1000</h4>
-          <p>Pessoas já passaram por aqui</p>
+        <div class="banner__content">
+            <div class="banner__card">
+                <h4>+1000</h4>
+                <p>Pessoas já passaram por aqui</p>
+            </div>
+            <div class="banner__card">
+                <h4>+40</h4>
+                <p>Eventos Realizados</p>
+            </div>
+            <div class="banner__card">
+                <h4>+100000</h4>
+                <p>Recordações</p>
+            </div>
         </div>
-        <div class="banner__card">
-          <h4>+40</h4>
-          <p>Eventos Realizados</p>
-        </div>
-        <div class="banner__card">
-          <h4>+100000</h4>
-          <p>Recordações</p>
-        </div>
-      </div>
     </section>
 
     <section class="explore" id="explore">
-      <p class="section__subheader">Explore a Natureza</p>
-      <h2 class="section__header">Experimente nosso cantinho.</h2>
-      <div class="explore__bg">
-        <div class="explore__content">
-          <p class="section__description">Reserve e comprove!</p>
-          <h4>Natureza, Piscina e esporte.</h4>
-          <a href="#home"><button class="btn1">Reservar</button></a>
+        <p class="section__subheader">Explore a Natureza</p>
+        <h2 class="section__header">Experimente nosso cantinho.</h2>
+        <div class="explore__bg">
+            <div class="explore__content">
+                <p class="section__description">Reserve e comprove!</p>
+                <h4>Natureza, Piscina e esporte.</h4>
+                <a href="#home"><button class="btn1">Reserconst</button></a>
+            </div>
         </div>
-      </div>
     </section>
 
     <footer class="footer" id="contact">
-      <div class="section__container footer__container">
-        <div class="footer__col">
-          <div class="logo">
-            <a href="#home"><img src="assets/marcabranca.svg" alt="logo" /></a>
-          </div>
-          <p class="section__description1">
-          O Rancho Serra do Mucambo é um espaço no pé da Serra do Mucambo, localizado no interior da Bahia, distrito de Salgadália (Conceição do Coité) onde a paz, diversão e alegria sempre será bem-vinda!
-          </p>
-         <a href="#home"> <button class="btn">Inicio</button></a>
+        <div class="section__container footer__container">
+            <div class="footer__col">
+                <div class="logo">
+                    <a href="#home"><img src="assets/marcabranca.svg" alt="logo" /></a>
+                </div>
+                <p class="section__description1">
+                    O Rancho Serra do Mucambo é um espaço no pé da Serra do Mucambo, localizado no interior da Bahia,
+                    distrito de
+                    Salgadália (Conceição do Coité) onde a paz, diversão e alegria sempre será bem-vinda!
+                </p>
+                <a href="#home"> <button class="btn">Inicio</button></a>
+            </div>
+            <div class="footer__col">
+                <h4>Dúvidas?</h4>
+                <ul class="footer__links">
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Aluguel</a>
+                    </li>
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Devolução</a>
+                    </li>
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Valores</a>
+                    </li>
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Datas</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Fale Conosco</h4>
+                <ul class="footer__links">
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Ouvidoria</a>
+                    </li>
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Contato</a>
+                    </li>
+                    <li><a
+                            href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Sugestões</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Contato</h4>
+                <ul class="footer__links">
+                    <li><a href="https://mail.google.com/mail/u/0/#sent?compose=new">ranchoserradomucambo@gamil.com</a>
+                    </li>
+                </ul>
+                <div class="footer__socials">
+                    <a href="#"><img src="icone_whatsapp.svg" alt="facebook" /></a>
+                    <a
+                        href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img
+                            src="assets/instagram.png" alt="instagram" /></a>
+
+                </div>
+            </div>
         </div>
-        <div class="footer__col">
-          <h4>Dúvidas?</h4>
-          <ul class="footer__links">
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Aluguel</a></li>
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Devolução</a></li>
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Valores</a></li>
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Datas</a></li>
-            
-          </ul>
+        <div class="footer__bar">
+            Todos Direitos Reservados © 2024 Rancho Serra Do Mucambo.
+            Software Desenvolvido Pela Minuti Studio.
         </div>
-        <div class="footer__col">
-          <h4>Fale Conosco</h4>
-          <ul class="footer__links">
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Ouvidoria</a></li>
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Contato</a></li>
-            <li><a href="https://api.whatsapp.com/send?phone=5575982006088&text=Ol%C3%A1,%20vim%20do%20Site%20e%20queria%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Rancho!%20">Sugestões</a></li>
-            
-          </ul>
-        </div>
-        <div class="footer__col">
-          <h4>Contato</h4>
-          <ul class="footer__links">
-            <li><a href="https://mail.google.com/mail/u/0/#sent?compose=new">ranchoserradomucambo@gamil.com</a></li>
-          </ul>
-          <div class="footer__socials">
-            <a href="#"><img src="icone_whatsapp.svg" alt="facebook" /></a>
-            <a href="https://www.instagram.com/ranchoserradomucambo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="assets/instagram.png" alt="instagram" /></a>
-           
-          </div>
-        </div>
-      </div>
-      <div class="footer__bar">
-        Todos Direitos Reservados © 2024 Rancho Serra Do Mucambo. 
-        Software Desenvolvido Pela Minuti Studio.
-      </div>
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="main.js"></script>
-  </body>
+    <script src="requests.js"></script>
+    <script src="datepicker.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        $(function () {
+            var endpoint = 'https://space-tracker-api.vercel.app/rentals/dates';
+            axios.get(endpoint)
+                .then(function (response) {
+                    let datasIndisponiveis = response.data.flatMap((dateObj) => dateObj.dates.map(date => {
+                        var dataFormatada = new Date(date).toISOString().slice(0, 10);
+                        var partesDaData = dataFormatada.split('-');
+                        return partesDaData[0] + '-' + partesDaData[1] + '-' + partesDaData[2];
+                    }));
+                    $("#datepicker1").datepicker({
+                        beforeShowDay: function (date) {
+                            var formattedDate = $.datepicker.formatDate("yy-mm-dd", date);
+                            return [datasIndisponiveis.indexOf(formattedDate) === -1];
+                        },
+                        dateFormat: "yy-mm-dd",
+                        minDate: "2024-01-01",
+                        maxDate: "2024-12-31"
+                    });
+                    $("#datepicker2").datepicker({
+                        beforeShowDay: function (date) {
+                            var formattedDate = $.datepicker.formatDate("yy-mm-dd", date);
+                            return [datasIndisponiveis.indexOf(formattedDate) === -1];
+                        },
+                        dateFormat: "yy-mm-dd",
+                        minDate: "2024-01-01",
+                        maxDate: "2024-12-31"
+                    });
+                })
+                .catch(function (error) {
+                    document.getElementById('resultado').innerText = 'Ocorreu um erro ao fazer a requisição: ' + error.message;
+                });
+        });
+    </script>
+</body>
+
 </html>
